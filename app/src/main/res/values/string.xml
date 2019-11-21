@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="deviceLost">No se encontraron pacientes</string>
+    <string name="email">email</string>
+    <string name="login_large">Sesion larga</string>
+    <string name="password">Contraseña</string>
+    <string name="passwordLost">Perdio la contraseña</string>
+    <string name="login">Sesion</string>
+    <string name="personal_information">Datos Personales</string>
+    <string name="name">Nombre</string>
+    <string name="state">Estado</string>
+    <string name="city">Ciudad</string>
+    <string name="adress">Direccion</string>
+    <string name="cellphone">Telefono</string>
+    <string name="save">Guardar</string>
+    <string name="patientlist">Lista de pacientes</string>
+</resources>
