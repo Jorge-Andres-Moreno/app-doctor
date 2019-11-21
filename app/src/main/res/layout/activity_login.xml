@@ -92,12 +92,13 @@
             android:layout_marginBottom="@dimen/margin_default"
             android:background="@drawable/rounded_circle_blue"
             android:elevation="15dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="Sesion"
             android:paddingHorizontal="@dimen/body_petit"
             android:paddingVertical="@dimen/text_size_medium"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:fontFamily="@font/montserrat_medium"
             android:textSize="@dimen/text_size_medium" />
 
     </LinearLayout>

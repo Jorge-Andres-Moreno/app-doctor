@@ -14,4 +14,6 @@
     <string name="cellphone">Telefono</string>
     <string name="save">Guardar</string>
     <string name="patientlist">Lista de pacientes</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
 </resources>
