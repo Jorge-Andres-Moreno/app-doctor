@@ -32,6 +32,7 @@
             android:textColor="@color/almost_white"
             android:textSize="@dimen/text_size_normal" />
 
+        
         <LinearLayout
             android:id="@+id/not_found_view"
             android:layout_width="match_parent"
