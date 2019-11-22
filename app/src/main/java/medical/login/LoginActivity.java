@@ -1,6 +1,5 @@
 package medical.login;
 
-<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-=======
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,44 +27,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import medical.MainActivity;
 
 
-<<<<<<< HEAD
-import medical.home.HomeActivity;
-
-public class LoginActivity extends Activity {
-=======
 public class LoginActivity extends AppCompatActivity  {
 
     private FirebaseAuth firebaseAuth;
     private EditText txtCorreo;
     private EditText txtContraseña;
     private Button btnLogin;
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
 
-    public EditText email, con;
-
-    public String correo = "qwert", contraseña ="qwert";
-
-    private Button btn1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-<<<<<<< HEAD
-        email = findViewById(R.id.email);
-        con = findViewById(R.id.password);
-
-        btn1 = findViewById(R.id.actionButton);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                if (con.getText().toString().equals(correo) && email.getText().toString().equals(contraseña)) {
-                    startActivity(i);
-                }else {
-                    Toast.makeText(getApplicationContext(), "incorrecto"+email.getText()+con.getText(), Toast.LENGTH_LONG).show();
-                }
-=======
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -118,13 +88,8 @@ public class LoginActivity extends AppCompatActivity  {
                     Toast.makeText(getApplicationContext(),"Correo o Contraseña Incorrecta",Toast.LENGTH_LONG).show();
                 }
 
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
             }
         });
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
 }
