@@ -1,41 +1,46 @@
 package medical.login;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+
 
 import com.android.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import medical.MainActivity;
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends AppCompatActivity {
 
-    private final int TIME = 3000;
+
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        final Activity me = this;
-        new Thread(new Runnable() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(TIME);
-                    me.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent i = new Intent(me, LoginActivity.class);
-                            me.startActivity(i);
-                            finish();
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
+
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+                if(firebaseUser ==null) {
+
+                    Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }else{
+
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(intent);
+
                 }
             }
-        }).start();
-
+        }, 3000);
     }
 }
+
