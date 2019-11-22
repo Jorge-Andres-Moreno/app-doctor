@@ -27,15 +27,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     implementation 'com.androidx.support:design:+'
-=======
     implementation("com.squareup.okhttp3:okhttp:4.2.1")
     implementation 'com.google.firebase:firebase-auth:19.1.0'
 
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
->>>>>>> master
 }
 apply plugin: 'com.google.gms.google-services'
