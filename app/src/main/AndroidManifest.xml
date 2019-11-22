@@ -27,16 +27,13 @@
         <activity
             android:name="medical.login.LoginActivity"
             android:screenOrientation="portrait"
-<<<<<<< HEAD
+
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="medical.home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-=======
-            android:theme="@style/AppTheme.NoActionBar" />
->>>>>>> ac9222a3db2c6027962fd86a4e77fafc6184139f
     </application>
 
 </manifest>
