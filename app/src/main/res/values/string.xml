@@ -18,5 +18,6 @@
     <string name="Close">Close</string>
     <string name="helpzone">Area de Ayuda</string>
     <string name="helpoption1">¿Como navegar en nuestra app?</string>
-    <string name="helpoption2">¿Como puedo pedir una cita medica?</string>
+    <string name="helpoption2">¿Como puedo dar asistencia a mi paciente?</string>
+    <string name="helpoption3">¿Como puedo saber el estado de mi paciente?</string>
 </resources>
