@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ><!--android:layout_below="@id/drawer_layout"-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:fontFamily="@font/montserrat_medium"
+            android:paddingVertical="@dimen/margin_small"
+            android:paddingLeft="@dimen/size_m"
+            android:text="@string/helpzone"
+            android:textColor="@color/almost_white"
+            android:textSize="@dimen/text_size_normal" />
+
+
+        <LinearLayout
+            android:id="@+id/help_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_size_ant"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/helpoption1"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/help2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_size_ant"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/helpoption2"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/help3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_size_ant"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/deviceLost"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/help4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_size_ant"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/deviceLost"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/help5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/text_size_ant"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@string/deviceLost"
+                android:textSize="@dimen/text_size_normal" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

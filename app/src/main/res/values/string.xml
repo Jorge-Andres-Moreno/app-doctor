@@ -16,4 +16,7 @@
     <string name="patientlist">Lista de pacientes</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+    <string name="helpzone">Area de Ayuda</string>
+    <string name="helpoption1">¿Como navegar en nuestra app?</string>
+    <string name="helpoption2">¿Como puedo pedir una cita medica?</string>
 </resources>
