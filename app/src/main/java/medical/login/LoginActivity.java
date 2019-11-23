@@ -1,33 +1,23 @@
 package medical.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.myapplication.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import medical.MainActivity;
+import medical.home.HomeActivity;
 
 
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private EditText txtCorreo;
@@ -56,40 +46,41 @@ public class LoginActivity extends AppCompatActivity  {
         });
     }
 
-    public void loguearUsuario(){
+    public void loguearUsuario() {
 
         String email = txtCorreo.getText().toString().trim();
         String password = txtContraseña.getText().toString().trim();
 
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(getApplicationContext(),"Se debe de ingresar un email",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Se debe de ingresar un email", Toast.LENGTH_LONG).show();
             return;
-        }
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(), "Se debe de ingresar una contraseña", Toast.LENGTH_LONG).show();
 
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(getApplicationContext(),"Se debe de ingresar una contraseña",Toast.LENGTH_LONG).show();
-            return;
-        }
+        } else {
+            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+/*
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
 
 
-        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+                    } else {
 
-                if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Bienvenido",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, ListadoP.class);
-                    startActivity(intent);
+                        Toast.makeText(getApplicationContext(), "Correo o Contraseña Incorrecta", Toast.LENGTH_LONG).show();
+                    }
 
-
-
-                }else{
-
-                    Toast.makeText(getApplicationContext(),"Correo o Contraseña Incorrecta",Toast.LENGTH_LONG).show();
                 }
-
-            }
-        });
+            });*/
+        }
     }
 
 }

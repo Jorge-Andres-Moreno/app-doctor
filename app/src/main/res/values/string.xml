@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">My Application</string>
     <string name="deviceLost">No se encontraron pacientes</string>
     <string name="email">email</string>
@@ -20,4 +21,12 @@
     <string name="helpoption1">¿Como navegar en nuestra app?</string>
     <string name="helpoption2">¿Como puedo dar asistencia a mi paciente?</string>
     <string name="helpoption3">¿Como puedo saber el estado de mi paciente?</string>
+
+    <string name="Home">INICIO</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
 </resources>

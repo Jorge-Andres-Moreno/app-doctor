@@ -10,7 +10,7 @@ import com.android.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import medical.MainActivity;
+import medical.home.HomeActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -35,10 +35,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else{
 
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
                     startActivity(intent);
 
                 }
+                finish();
             }
         }, 3000);
     }
