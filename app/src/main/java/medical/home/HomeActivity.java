@@ -22,7 +22,9 @@ import com.android.myapplication.R;/*
 import com.google.android.material.navigation.NavigationView;*/
 import com.google.android.material.navigation.NavigationView;
 
+import medical.help.HelpActivity;
 import medical.login.LoginActivity;
+import medical.profile.ProfileActivity;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -81,25 +83,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         Intent in;
         switch (item.getItemId()) {
+            /*
             case R.id.home:
                 Toast.makeText(this, "Home",Toast.LENGTH_LONG);
                 break;
-
-            case R.id.account:
+*/
+            case R.id.profile:
                 Toast.makeText(this, "account",Toast.LENGTH_LONG);
-              //  in = new Intent(this, AccountActivity.class);
-                //startActivity(in);
+                in = new Intent(this, ProfileActivity.class);
+                startActivity(in);
                 break;
-
+/*
             case R.id.agenda:
                 Toast.makeText(this, "Agenda",Toast.LENGTH_LONG);
                 break;
-
+*/
             case R.id.payment:
                 Toast.makeText(this, "Payment",Toast.LENGTH_LONG);
+                /*in = new Intent(HomeActivity.this, PaymentMethodActivity.class);
+                startActivity(in);*/
                 break;
             case R.id.help:
                 Toast.makeText(this, "Help",Toast.LENGTH_LONG);
+
+                in = new Intent(HomeActivity.this, HelpActivity.class);
+                startActivity(in);
                 break;
 
             case R.id.logout:

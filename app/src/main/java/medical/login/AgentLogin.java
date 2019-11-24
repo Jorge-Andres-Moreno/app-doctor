@@ -11,7 +11,7 @@ import okhttp3.Response;
 
 public class AgentLogin {
 
-    private OkHttpClient okHttpClient;
+/*    private OkHttpClient okHttpClient;
     private GetPacientes getPacientes;
 
     public void consultarPacientes(){
@@ -19,11 +19,7 @@ public class AgentLogin {
         getPacientes.execute();
 
 
-    }
-
-
-
-
+    }*
     private class GetPacientes extends AsyncTask<String,  Void, String> {
 
         public GetPacientes(){
@@ -50,6 +46,7 @@ public class AgentLogin {
 
             return null;
         }
-    }
+
+    }*/
 
 }

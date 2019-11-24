@@ -6,14 +6,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home"
-            android:title="HOME" />
-        <item
-            android:id="@+id/account"
+            android:id="@+id/profile"
             android:title="MI CUENTA" />
-        <item
-            android:id="@+id/agenda"
-            android:title="MIS ASESORÍAS" />
         <item
             android:id="@+id/payment"
             android:title="MÉTODO DE PAGO" />

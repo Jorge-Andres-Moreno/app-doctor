@@ -3,9 +3,9 @@
     <string name="app_name">My Application</string>
     <string name="deviceLost">No se encontraron pacientes</string>
     <string name="email">email</string>
-    <string name="login_large">Sesion larga</string>
+    <string name="login_large">Iniciar</string>
     <string name="password">Contraseña</string>
-    <string name="passwordLost">Perdio la contraseña</string>
+    <string name="passwordLost">¿Has olvidado tu contraseña?</string>
     <string name="login">Sesion</string>
     <string name="personal_information">Datos Personales</string>
     <string name="name">Nombre</string>
@@ -17,16 +17,27 @@
     <string name="patientlist">Lista de pacientes</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+
     <string name="helpzone">Area de Ayuda</string>
-    <string name="helpoption1">¿Como navegar en nuestra app?</string>
-    <string name="helpoption2">¿Como puedo dar asistencia a mi paciente?</string>
-    <string name="helpoption3">¿Como puedo saber el estado de mi paciente?</string>
+    <string name="mailsubject">Asunto</string>
+    <string name="option1">Peticion</string>
+    <string name="option2">Quejas</string>
+    <string name="option3">Reclamos</string>
+    <string name="sendmail">Enviar</string>
+
+
 
     <string name="Home">INICIO</string>
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="paymethod">Metodo de pago</string>
+    <string name="paydetails">Detalles de pago</string>
+    <string name="numbercard">Numero de tarjeta</string>
+    <string name="expirydate">Fecha de vencimiento</string>
+    <string name="cvcode">Codigo CV</string>
+    <string name="totalpay">Total a pagar</string>
 
 
 </resources>
