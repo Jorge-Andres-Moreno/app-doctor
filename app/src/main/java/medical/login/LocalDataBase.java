@@ -28,14 +28,17 @@ public class LocalDataBase {
         return INSTANCE == null ? (INSTANCE = new LocalDataBase(context)) : INSTANCE;
     }
 
-    public UserAtributtes getUser() {
+    public UserAtributtes getNombre() {
         //loadUser();
         return me;
     }
 
     private void loadUser() {
         Gson gson = new GsonBuilder().create();
-        me = gson.fromJson(preferences.getString("user", null), UserAtributtes.class);
+        me = gson.fromJson(preferences.getString("email", null), UserAtributtes.class);
+        me = gson.fromJson(preferences.getString("id", null), UserAtributtes.class);
+        me = gson.fromJson(preferences.getString("nombre", null), UserAtributtes.class);
+        me = gson.fromJson(preferences.getString("telefono", null), UserAtributtes.class);
         /*if (me != null)
             NetworkConstants.AWSOME = me.getAwsome();*/
     }
@@ -45,7 +48,10 @@ public class LocalDataBase {
     public void saveUser(UserAtributtes user) {
         Gson gson = new GsonBuilder().create();
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putString("user", gson.toJson(user, UserAtributtes.class));
+        edit.putString("email", gson.toJson(user, UserAtributtes.class));
+        edit.putString("id", gson.toJson(user, UserAtributtes.class));
+        edit.putString("nombre", gson.toJson(user, UserAtributtes.class));
+        edit.putString("telefono", gson.toJson(user, UserAtributtes.class));
         /*if (edit.commit()) {
             me = user;
             NetworkConstants.AWSOME = me.getAwsome();

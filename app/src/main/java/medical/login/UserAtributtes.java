@@ -6,8 +6,8 @@ public class UserAtributtes {
 
     private String email = "";
     private String id = "";
-    private String name = "";
-    private int phonenumber = 0;
+    private String nombre = "";
+    private int telefono = 0;
 
     public String getId() {
         return id;
@@ -17,22 +17,21 @@ public class UserAtributtes {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getPhonenumber() {
-        return phonenumber;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setPhonenumber(int phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
-
 
     public String getEmail() {
         return email;

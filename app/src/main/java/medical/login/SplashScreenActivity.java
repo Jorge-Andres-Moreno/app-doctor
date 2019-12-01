@@ -33,20 +33,15 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-                if(firebaseUser ==null) {
-
-                    /*si (existe archivo de shared preferences){
-                    * capturar los datos e intentar loguear}
-                    * si no{*/
+                    if(firebaseUser ==null) {
                         Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                         startActivity(intent);
-                    /*}*/
-                }else{
 
-                    Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                    }else{
 
-                }
+                        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    }
                 finish();
             }
         }, 3000);
@@ -56,14 +51,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         String archivos[] = fileList();
         String filename = "luid.bin";
 
-        if (fileexist(archivos, filename) ){
+        if (!fileexist(archivos, filename) ){
             try{
                 InputStreamReader isr = new InputStreamReader(openFileInput(filename));
                 BufferedReader br = new BufferedReader(isr);
                 String saveuid = br.readLine();
                 br.close();
                 isr.close();
-                Toast.makeText(getApplicationContext(), "Recuperado: " + saveuid, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Recuperado del local: " + saveuid, Toast.LENGTH_LONG).show();
             }catch (IOException ex){
 
             }

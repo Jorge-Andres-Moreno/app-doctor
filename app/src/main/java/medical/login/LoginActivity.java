@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     try {
                         saveUIDLogin(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
                         Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
