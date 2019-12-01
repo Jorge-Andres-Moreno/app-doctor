@@ -3,7 +3,7 @@
     <string name="app_name">My Application</string>
     <string name="deviceLost">No se encontraron pacientes</string>
     <string name="email">email</string>
-    <string name="login_large">Iniciar</string>
+    <string name="login_large">Iniciar Sesion</string>
     <string name="password">Contraseña</string>
     <string name="passwordLost">¿Has olvidado tu contraseña?</string>
     <string name="login">Sesion</string>
