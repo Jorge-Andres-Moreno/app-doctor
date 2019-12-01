@@ -1,6 +1,6 @@
-package medical.login;
+package medical.model;
 
-public class UserAtributtes {
+public class User {
 
     //{"email":"mix7reload@gmail.com ","id":"0EaBsE2IitYHgz52mNOXmWp4Jey2","nombre":"Edgar Andres Angrino","telefono":31555555555}
 
@@ -41,6 +41,6 @@ public class UserAtributtes {
         this.email = email;
     }
 
-    public UserAtributtes() {
+    public User() {
     }
 }
