@@ -2,6 +2,7 @@ package medical.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -54,8 +55,14 @@ public class LoginActivity extends AppCompatActivity implements DefaultCallback 
         String email = txtCorreo.getText().toString().trim();
         String password = txtContraseña.getText().toString().trim();
 
-        agentLogin.registrar(email, password, this);
-
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Se debe de ingresar un email", Toast.LENGTH_LONG).show();
+            return;
+        } else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(), "Se debe de ingresar una contraseña", Toast.LENGTH_LONG).show();
+            return;
+        } else
+            agentLogin.registrar(email, password, this);
     }
 
     @Override
@@ -67,6 +74,7 @@ public class LoginActivity extends AppCompatActivity implements DefaultCallback 
                     Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "fail login", Toast.LENGTH_SHORT);
                 }
@@ -79,14 +87,6 @@ public class LoginActivity extends AppCompatActivity implements DefaultCallback 
 
 /* Basuras si las moscas
     /*
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Se debe de ingresar un email", Toast.LENGTH_LONG).show();
-            return;
-        } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Se debe de ingresar una contraseña", Toast.LENGTH_LONG).show();
-
-        } else {
-            //Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
 
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
