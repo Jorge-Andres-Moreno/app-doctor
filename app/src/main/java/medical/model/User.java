@@ -8,6 +8,9 @@ public class User {
     private String id = "";
     private String nombre = "";
     private int telefono = 0;
+    private String especialidad = "";
+    private String pacientes;
+    private String cedula;
 
     public String getId() {
         return id;
@@ -43,4 +46,29 @@ public class User {
 
     public User() {
     }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String setCedula() {
+        return cedula;
+    }
+/*    public String getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(String pacientes) {
+        this.pacientes = pacientes;
+    }*/
+
+
 }

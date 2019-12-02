@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +49,14 @@ public class LoginActivity extends AppCompatActivity implements DefaultCallback 
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue));
+        hideSoftKeyBoard();
+    }
+
+    private void hideSoftKeyBoard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
     public void loguearUsuario() {

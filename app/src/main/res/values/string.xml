@@ -2,16 +2,17 @@
 
     <string name="app_name">Medical</string>
     <string name="deviceLost">No se encontraron pacientes</string>
-    <string name="email">email</string>
+    <string name="email">Correo Electronico</string>
     <string name="login_large">Iniciar Sesion</string>
     <string name="password">Contraseña</string>
     <string name="passwordLost">¿Has olvidado tu contraseña?</string>
     <string name="login">Sesion</string>
     <string name="personal_information">Datos Personales</string>
+    <string name="idenfied">Identificador</string>
     <string name="name">Nombre</string>
-    <string name="state">Estado</string>
-    <string name="city">Ciudad</string>
-    <string name="adress">Direccion</string>
+    <string name="skill">Especialidad</string>
+    <string name="cc">Cedula</string>
+    <string name="patients">Pacientes</string>
     <string name="cellphone">Telefono</string>
     <string name="save">Guardar</string>
     <string name="patientlist">Lista de pacientes</string>

@@ -46,6 +46,8 @@
             android:layout_marginTop="@dimen/size_l"
             android:hint="@string/email"
             android:nextFocusDown="@id/password"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:textColor="@color/blue_strong"
 
             android:textSize="@dimen/text_size_large" />
@@ -60,6 +62,9 @@
             android:hint="@string/password"
             android:fontFamily="@font/montserrat_regular"
             android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:nextFocusDown="@+id/actionButton"
             android:textColor="@color/blue_strong"
             android:textSize="@dimen/text_size_large" />
 

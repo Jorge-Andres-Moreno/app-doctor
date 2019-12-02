@@ -26,26 +26,19 @@ public class LocalDataBase {
     }
 
     private void loadUser() {
-        if (me != null) {
+        if (me == null) {
             Gson gson = new GsonBuilder().create();
             me = gson.fromJson(preferences.getString("user", null), User.class);
         }
     }
 
     public void saveUser(User user) {
-
         Gson gson = new GsonBuilder().create();
         SharedPreferences.Editor edit = preferences.edit();
-
-        edit.putString("email", gson.toJson(user, User.class));
-        edit.putString("id", gson.toJson(user, User.class));
-        edit.putString("nombre", gson.toJson(user, User.class));
-        edit.putString("telefono", gson.toJson(user, User.class));
-
+        edit.putString("user", gson.toJson(user, User.class));
         if (edit.commit())
             me = user;
     }
-
 
     public void deletedCredentials() {
         SharedPreferences.Editor edit = preferences.edit();

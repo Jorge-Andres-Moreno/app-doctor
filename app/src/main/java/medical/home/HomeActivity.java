@@ -24,7 +24,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import medical.help.HelpActivity;
 import medical.login.LoginActivity;
+import medical.model.LocalDataBase;
 import medical.profile.ProfileActivity;
+import medical.login.AgentLogin;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -111,8 +113,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.logout:
-                Toast.makeText(this, "Salio",Toast.LENGTH_LONG);
-               // (new AgentLogin(this)).logout();
+                new AgentLogin(this).signOut();
                 in = new Intent(this, LoginActivity.class);
                 startActivity(in);
                 finish();

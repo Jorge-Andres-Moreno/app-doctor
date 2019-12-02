@@ -25,13 +25,13 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if (agentLogin.isSingIn())
-                    intent = new Intent(getApplicationContext(), LoginActivity.class);
-                else
                     intent = new Intent(getApplicationContext(), HomeActivity.class);
+                else
+                    intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 2500);
 
     }
 
