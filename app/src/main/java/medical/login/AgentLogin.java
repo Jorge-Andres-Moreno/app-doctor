@@ -10,7 +10,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
@@ -32,8 +31,7 @@ public class AgentLogin {
     }
 
     public boolean isSingIn() {
-        Log.i("Error: ",(LocalDataBase.getInstance(null).getUser() == null)+"");
-        return LocalDataBase.getInstance(null).getUser() != null;
+        return LocalDataBase.getInstance(null).getUser() != null;//Log.i("Error: ",(LocalDataBase.getInstance(null).getUser() == null)+"");
     }
 
     public void signOut() {
@@ -97,17 +95,6 @@ public class AgentLogin {
                         user.setTelefono(object.getInt("telefono"));
 
                         LocalDataBase.getInstance(null).saveUser(user);
-                        /*
-                            "cedula": 11448189484,
-    "email": "prueba@gmail.com",
-    "especialidad": "corazon",
-    "id": "VAggJkQTX0cZxoHbgKhnPI2ub0G2",
-    "nombre": "prueba ejemplo",
-    "pacientes": {
-        "id": "0EaBsE2IitYHgz52mNOXmWp4Jey2"
-    },
-    "telefono": 7777777
-                        */
                         callback.onFinishProcess(true, null);
                     } else
                         callback.onFinishProcess(false, null);
