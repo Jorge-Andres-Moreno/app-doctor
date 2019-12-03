@@ -1,5 +1,9 @@
 package medical.help;
 
+import android.util.Log;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.concurrent.TimeUnit;
 
 import medical.utils.DefaultCallback;
@@ -14,9 +18,14 @@ import medical.model.LocalDataBase;
 import medical.model.User;
 public class AgentHelp {
 
+    private FirebaseAuth firebaseAuth;
 
 
     public void sendMessageSupport(final String reason, final String message, final DefaultCallback notify) {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        final String uid = firebaseAuth.getUid();
+        Log.i("Llorar: ", uid);
 
         new Thread(new Runnable() {
             @Override
@@ -29,8 +38,7 @@ public class AgentHelp {
 
 
                     RequestBody body = new FormBody.Builder()
-                            //new LocalDataBase(null).getInstance(null).getUser().getId()
-                            .add("userId", "123_ID_USUARIO_QUEMADO_APP")
+                            .add("userId", uid)
                             .add("reason", reason)
                             .add("name", message)
                             .add("phone", message)
