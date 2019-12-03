@@ -1,83 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"><!--android:layout_below="@id/drawer_layout"-->
+        android:layout_height="match_parent">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent"><!--android:layout_below="@id/drawer_layout"-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/blue"
-                android:fontFamily="@font/montserrat_medium"
-                android:paddingVertical="@dimen/margin_small"
-                android:paddingLeft="@dimen/size_m"
-                android:text="@string/helpzone"
-                android:textColor="@color/almost_white"
-                android:textSize="@dimen/text_size_normal" />
 
             <LinearLayout
-                android:id="@+id/help_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:gravity="center"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/rounded_corners"
-                    android:layout_margin="10dp">
+                    android:gravity="center">
 
                     <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="80dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="11dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:text="@string/mailsubject"
+                        android:background="@drawable/gradient_vertical_blue"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:text="@string/helpzone"
+                        android:textColor="@color/almost_white"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="20dp">
+
+                        <ImageView
+                            android:id="@+id/backlayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/backl"
+                            android:tint="@color/white" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/help_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="left"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/titulohelp"
+                            android:textColor="@color/blue_strong"
+                            android:textSize="25sp" />
+
+                        <TextView
+                            android:id="@+id/helptextview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="25dp"
+                            android:gravity="center"
+                            android:text="@string/texthelp"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/motivos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+
+                        android:text="@string/reason"
                         android:textSize="18sp" />
 
-                    <Spinner
-                        android:id="@+id/spinner"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="@drawable/rounded_corners"
+                        android:orientation="horizontal">
 
+
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/message"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/editText5"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@drawable/rounded_corners"
+                        android:ems="10"
+                        android:gravity="top"
+                        android:padding="10dp"
+                        android:scrollbars="vertical"
+                        android:scrollHorizontally="false"
+                        android:inputType="textCapSentences|textMultiLine"  />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:background="@drawable/rounded_circle_blue"
+                            android:text="@string/sendmail"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editText5"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:background="@drawable/rounded_corners"
-                    android:ems="10"
-                    android:gravity="top"
-                    android:hint="Mensaje"
-                    android:inputType="textPersonName"
-                    android:padding="10dp" />
-
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/sendmail"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_circle_blue"/>
             </LinearLayout>
-        </LinearLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
 </LinearLayout>

@@ -10,7 +10,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import medical.model.LocalDataBase;
+import medical.model.User;
 public class AgentHelp {
+
+
 
     public void sendMessageSupport(final String reason, final String message, final DefaultCallback notify) {
 
@@ -25,9 +29,13 @@ public class AgentHelp {
 
 
                     RequestBody body = new FormBody.Builder()
+                            //new LocalDataBase(null).getInstance(null).getUser().getId()
                             .add("userId", "123_ID_USUARIO_QUEMADO_APP")
                             .add("reason", reason)
-                            .add("message", message)
+                            .add("name", message)
+                            .add("phone", message)
+                            .add("type", message)
+                            .add("email", message)
                             .build();
 
                     Request request = new Request.Builder()

@@ -1,5 +1,7 @@
 package medical.model;
 
+import java.util.ArrayList;
+
 public class User {
 
     //{"email":"mix7reload@gmail.com ","id":"0EaBsE2IitYHgz52mNOXmWp4Jey2","nombre":"Edgar Andres Angrino","telefono":31555555555}
@@ -9,8 +11,11 @@ public class User {
     private String nombre = "";
     private int telefono = 0;
     private String especialidad = "";
-    private String pacientes;
+    private ArrayList<String> pacientes;
     private String cedula;
+
+    public User() {
+    }
 
     public String getId() {
         return id;
@@ -44,9 +49,6 @@ public class User {
         this.email = email;
     }
 
-    public User() {
-    }
-
     public String getEspecialidad() {
         return especialidad;
     }
@@ -59,16 +61,16 @@ public class User {
         this.cedula = cedula;
     }
 
-    public String setCedula() {
+    public String getCedula() {
         return cedula;
     }
-/*    public String getPacientes() {
+
+    public ArrayList<String> getPacientes(){
         return pacientes;
     }
 
-    public void setPacientes(String pacientes) {
+    public void setPacientes(ArrayList<String> pacientes) {
         this.pacientes = pacientes;
-    }*/
-
+    }
 
 }

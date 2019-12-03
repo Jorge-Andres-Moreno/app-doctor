@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,13 +17,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.android.myapplication.R;/*
-import com.google.android.material.navigation.NavigationView;*/
+import com.android.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
 import medical.help.HelpActivity;
 import medical.login.LoginActivity;
-import medical.model.LocalDataBase;
 import medical.profile.ProfileActivity;
 import medical.login.AgentLogin;
 
@@ -85,11 +82,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         Intent in;
         switch (item.getItemId()) {
-            /*
-            case R.id.home:
-                Toast.makeText(this, "Home",Toast.LENGTH_LONG);
-                break;
-*/
             case R.id.profile:
                 Toast.makeText(this, "account",Toast.LENGTH_LONG);
                 in = new Intent(this, ProfileActivity.class);

@@ -19,9 +19,11 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
 
-    <string name="helpzone">Area de Ayuda</string>
-    <string name="mailsubject">Asunto</string>
-    <string name="option1">Peticion</string>
+    <string name="helpzone">Ayuda</string>
+    <string name="reason">Motivo:</string>
+    <string name="message">Mensaje:</string>
+    <string name="texthelp">Si tienes inconvenientes, dudas o sugerencias sobre esta aplicación, puedes contactarnos y te responderemos lo antes posible. ¡Escríbenos!</string>
+    <string name="titulohelp">Bienvenido al centro de ayuda de Medical</string>
     <string name="option2">Quejas</string>
     <string name="option3">Reclamos</string>
     <string name="sendmail">Enviar</string>
@@ -34,7 +36,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="paymethod">Metodo de pago</string>
-    <string name="paydetails">Detalles de pago</string>
+    <string name="paydetails">Perfil</string>
     <string name="numbercard">Numero de tarjeta</string>
     <string name="expirydate">Fecha de vencimiento</string>
     <string name="cvcode">Codigo CV</string>
