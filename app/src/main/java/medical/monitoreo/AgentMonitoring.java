@@ -1,8 +1,6 @@
-package medical.home;
+package medical.monitoreo;
 
 import android.util.Log;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONObject;
 
@@ -16,15 +14,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AgentHome {
+public class AgentMonitoring {
 
-
-    private FirebaseAuth firebaseAuth;
-
-    public void getPatientList(final String reason, final String name, final DefaultCallback notify) {
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        final String uid = firebaseAuth.getUid();
+    public void getMonitoringData(final String id, final String pulso, final String ecgr, final DefaultCallback notify) {
 
         new Thread(new Runnable() {
             @Override
@@ -36,12 +28,13 @@ public class AgentHome {
                             .build();
 
                     RequestBody body = new FormBody.Builder()
-                            .add("id", uid)
-                            .add("name", reason)
+                            .add("id", id)
+                            .add("pulso", pulso)
+                            .add("ecg", ecgr)
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_HELP)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITORING)
                             .post(body)
                             .build();
 
@@ -50,8 +43,7 @@ public class AgentHome {
                     if (response.code() == 200) {
 
                         JSONObject object = new JSONObject(response.body().string());
-                        Log.i("Visaje: ",object.getString("pacientes"));
-
+                        Log.i("Visaje: ",object.getString("pulso"));
 
                         notify.onFinishProcess(true, "success");
                     } else {
@@ -64,6 +56,4 @@ public class AgentHome {
             }
         }).start();
     }
-
-
 }

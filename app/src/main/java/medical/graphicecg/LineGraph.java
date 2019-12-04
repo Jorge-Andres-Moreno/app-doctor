@@ -1,5 +1,5 @@
 package medical.graphicecg;
-/*
+
 import android.content.Context;
 import android.graphics.Color;
 
@@ -9,11 +9,8 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
-*/
-public class LineGraph {
 
-/*
-    //version Cristian
+public class LineGraph {
 
     private GraphicalView mchart;
     private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
@@ -23,10 +20,7 @@ public class LineGraph {
 
     ////
 
-    public LineGraph(){
-
-
-        // version Cristian
+    public LineGraph() {
 
         mCurrentSeries = new XYSeries("");
         mDataset.addSeries(mCurrentSeries);
@@ -46,29 +40,23 @@ public class LineGraph {
         mRender.setYLabelsColor(0, Color.BLACK);
         mRender.setXLabelsColor(Color.BLACK);
         mRender.setXTitle("Tiempo [s]");
-        mRender.setYTitle("Voltaje [mV]");
+        mRender.setYTitle("Pulso [f.c]");
         mRender.setAxisTitleTextSize(50);
         mRender.setLabelsColor(Color.BLACK);
         mRender.setXLabels(20);
-        mRender.setMargins(new int [] {80,80,80,80});
+        mRender.setMargins(new int[]{80, 80, 80, 80});
         mRender.addSeriesRenderer(mCurrentRenderer);
-
 
     }
 
-    public GraphicalView getView(Context context)
-    {
-        mchart = ChartFactory.getCubeLineChartView(context, mDataset,mRender,0);
+    public GraphicalView getView(Context context) {
+        mchart = ChartFactory.getCubeLineChartView(context, mDataset, mRender, 0);
         return mchart;
     }
 
+    public void addCoordenada(double x, double y) {
 
-    public void addCoordenada(double x, double y){
-
-        mCurrentSeries.add(x,y);
+        mCurrentSeries.add(x, y);
     }
 
-
-
-*/
 }

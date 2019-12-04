@@ -13,8 +13,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import medical.model.Patients;
 import medical.utils.DefaultCallback;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
@@ -56,10 +58,8 @@ public class AgentLogin {
                             callback.onFinishProcess(false, null);
                     }
                 });
-
             }
         }).start();
-
     }
 
     private void getUserData(final DefaultCallback callback) {
@@ -89,18 +89,13 @@ public class AgentLogin {
                     if (response.code() == 200) {
 
                         JSONObject object = new JSONObject(response.body().string());
-
+                        //Log.i("Verga", object + "");
                         User user = new User();
                         user.setCedula(object.getString("cedula"));
                         user.setEmail(object.getString("email"));
                         user.setEspecialidad(object.getString("especialidad"));
                         user.setId(object.getString("id"));
                         user.setNombre(object.getString("nombre"));
-                        JSONArray paciente = new JSONArray(object.getString("pacientes"));
-                        for (int i = 0; i < paciente.length(); i++) {
-                            Log.i("..........", "" + paciente.getString(i));
-                            // loop and add it to array or arraylist
-                        }
                         user.setTelefono(object.getInt("telefono"));
 
                         LocalDataBase.getInstance(null).saveUser(user);

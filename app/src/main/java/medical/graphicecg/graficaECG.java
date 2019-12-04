@@ -6,52 +6,45 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.myapplication.R;
 
-/*import org.achartengine.GraphicalView;*/
+import org.achartengine.GraphicalView;
 
 public class graficaECG extends AppCompatActivity {
 
-/*
     private static GraphicalView view;
     private LineGraph line = new LineGraph();
-    private static Thread thread;*/
+    private static Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafica_ecg);
-/*
-        thread = new Thread(){
-          public void run(){
 
-              for(int i =0 ; i<20;i++) {
-                  try {
-                      Thread.sleep(1000);
-                  } catch (InterruptedException e) {
-                      e.printStackTrace();
-                  }
+        thread = new Thread() {
+            public void run() {
 
-                  double x = i;
+                for (int i = 0; i < 20; i++) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-                  line.addCoordenada(x,x);
+                    double x = i;
+                    line.addCoordenada(x, x);
+                    view.repaint();
 
-                  view.repaint();
-
-              }
-
-          }
+                }
+            }
         };
-
         thread.start();
-*/
     }
-/*
+
     @Override
     protected void onStart() {
         super.onStart();
         view = line.getView(this);
         setContentView(view);
     }
-*/
 
 
 }

@@ -1,7 +1,5 @@
 package medical.help;
 
-import android.util.Log;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.concurrent.TimeUnit;
@@ -14,18 +12,14 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import medical.model.LocalDataBase;
-import medical.model.User;
 public class AgentHelp {
 
     private FirebaseAuth firebaseAuth;
-
 
     public void sendMessageSupport(final String reason, final String message, final DefaultCallback notify) {
 
         firebaseAuth = FirebaseAuth.getInstance();
         final String uid = firebaseAuth.getUid();
-        Log.i("Llorar: ", uid);
 
         new Thread(new Runnable() {
             @Override
@@ -35,7 +29,6 @@ public class AgentHelp {
                             .connectTimeout(15, TimeUnit.SECONDS)
                             .readTimeout(15, TimeUnit.SECONDS)
                             .build();
-
 
                     RequestBody body = new FormBody.Builder()
                             .add("userId", uid)
@@ -65,6 +58,5 @@ public class AgentHelp {
             }
         }).start();
     }
-
 
 }

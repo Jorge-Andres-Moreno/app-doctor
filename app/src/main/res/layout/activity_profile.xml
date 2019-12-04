@@ -5,8 +5,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +31,6 @@
                 android:layout_marginTop="@dimen/margin_default"
                 android:src="@drawable/image_example" />
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +42,7 @@
                 android:textSize="@dimen/text_size_medium" />
 
             <EditText
-                android:id="@+id/correo"
+                android:id="@+id/nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_m"
@@ -62,7 +60,7 @@
                 android:textSize="@dimen/text_size_medium" />
 
             <EditText
-                android:id="@+id/state"
+                android:id="@+id/correo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_m"
@@ -80,7 +78,7 @@
                 android:textSize="@dimen/text_size_medium" />
 
             <EditText
-                android:id="@+id/city"
+                android:id="@+id/cedula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_m"
@@ -98,7 +96,25 @@
                 android:textSize="@dimen/text_size_medium" />
 
             <EditText
-                android:id="@+id/adress"
+                android:id="@+id/especialidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/size_m"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/rounded_corners"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingLeft="@dimen/size_m"
+                android:text="@string/cellphone"
+                android:textColor="@color/blue_strong"
+                android:textSize="@dimen/text_size_medium" />
+
+            <EditText
+                android:id="@+id/telefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/size_m"
@@ -116,7 +132,7 @@
                 android:textSize="@dimen/text_size_medium" />
 
             <EditText
-                android:id="@+id/number"
+                android:id="@+id/paciente"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginHorizontal="@dimen/size_m"

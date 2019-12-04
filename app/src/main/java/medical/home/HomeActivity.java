@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import medical.help.HelpActivity;
 import medical.login.LoginActivity;
+import medical.monitoreo.MonitoringActivity;
 import medical.profile.ProfileActivity;
 import medical.login.AgentLogin;
 
@@ -30,7 +31,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private CustomViewPager pager;
     private TextView title;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +58,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         title = findViewById(R.id.title);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue_strong));
-        }
 
     }
 
@@ -76,6 +74,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
+    public void homepacientes(){
+
+        String Id ="";
+        String nombre ="";
+
+        //Intent i = new Intent(this, Ejercicio_2_2.class);
+        //i.putExtra("rond1_1", et_1.getText().toString());
+        //startActivity(i);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -83,7 +90,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent in;
         switch (item.getItemId()) {
             case R.id.profile:
-                Toast.makeText(this, "account",Toast.LENGTH_LONG);
+                Toast.makeText(this, "account", Toast.LENGTH_LONG);
                 in = new Intent(this, ProfileActivity.class);
                 startActivity(in);
                 break;
@@ -93,12 +100,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 */
             case R.id.payment:
-                Toast.makeText(this, "Payment",Toast.LENGTH_LONG);
+                Toast.makeText(this, "Payment", Toast.LENGTH_LONG);
                 /*in = new Intent(HomeActivity.this, PaymentMethodActivity.class);
                 startActivity(in);*/
                 break;
+
+            case R.id.monitorieo:
+                Toast.makeText(this, "Payment", Toast.LENGTH_LONG);
+                in = new Intent(HomeActivity.this, MonitoringActivity.class);
+                startActivity(in);
+                break;
             case R.id.help:
-                Toast.makeText(this, "Help",Toast.LENGTH_LONG);
+                Toast.makeText(this, "Help", Toast.LENGTH_LONG);
 
                 in = new Intent(HomeActivity.this, HelpActivity.class);
                 startActivity(in);

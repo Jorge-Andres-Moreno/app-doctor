@@ -11,10 +11,11 @@ public class User {
     private String nombre = "";
     private int telefono = 0;
     private String especialidad = "";
-    private ArrayList<String> pacientes;
+    private ArrayList<Patients> pacientes;
     private String cedula;
 
     public User() {
+        pacientes = new ArrayList<>();
     }
 
     public String getId() {
@@ -65,11 +66,11 @@ public class User {
         return cedula;
     }
 
-    public ArrayList<String> getPacientes(){
+    public ArrayList<Patients> getPacientes() {
         return pacientes;
     }
 
-    public void setPacientes(ArrayList<String> pacientes) {
+    public void setPacientes(ArrayList<Patients> pacientes) {
         this.pacientes = pacientes;
     }
 

@@ -11,5 +11,6 @@ public class NetworkConstants {
 
     public static final String PATH_HELP = "help/";
     public static final String PATH_PROFILE = "perfil/";
+    public static final String PATH_MONITORING = "monitoreo/";
 
 }
