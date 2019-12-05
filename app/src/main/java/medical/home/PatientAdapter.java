@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.R;
 
+import medical.monitor.AgentMonitor;
 import medical.monitor.MonitorActivity;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
@@ -57,9 +58,12 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
         @Override
         public void onClick(View v) {
-            Intent in = new Intent(activity, MonitorActivity.class);
-            in.putExtra("id",agent.pacientes.get(position).getId());
-            activity.startActivity(in);
+            new AgentMonitor(agent.pacientes.get(position).getId());
+            DialogSelectParameter dialogSelectParameter = new DialogSelectParameter(activity);
+            dialogSelectParameter.show();
+//            Intent in = new Intent(activity, MonitorActivity.class);
+//            in.putExtra("id",agent.pacientes.get(position).getId());
+//            activity.startActivity(in);
         }
     }
 

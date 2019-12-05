@@ -27,9 +27,7 @@ public class MonitorActivity extends Activity implements DefaultCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoreo);
 
-        String id = getIntent().getExtras().getString("id");
-
-        agent = new AgentMonitor(id);
+        agent = AgentMonitor.INSTANCE;
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

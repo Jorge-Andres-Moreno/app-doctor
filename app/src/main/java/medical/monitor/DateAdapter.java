@@ -1,10 +1,12 @@
 package medical.monitor;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,12 +60,18 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
         public void onClick(View v) {
             agent.getDataMonitorDate(agent.dates.get(position), new DefaultCallback() {
                 @Override
-                public void onFinishProcess(boolean hasSucceeded, Object result) {
-                    if (hasSucceeded) {
-                        //VALLA PARA EL NUEVO ACTIVY
-                    } else {
-                        //MUESTRE EL ERROR
-                    }
+                public void onFinishProcess(final boolean hasSucceeded, Object result) {
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (hasSucceeded) {
+                                Intent in = new Intent(activity, GrahicActivity.class);
+                                activity.startActivity(in);
+                            } else
+                                Toast.makeText(activity, "Get Data Fail", Toast.LENGTH_SHORT);
+                        }
+                    });
+
                 }
             });
 //            Intent in = new Intent(activity, MonitorActivity.class);

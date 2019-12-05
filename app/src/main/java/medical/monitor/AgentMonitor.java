@@ -20,8 +20,10 @@ import okhttp3.Response;
 
 public class AgentMonitor {
 
+    public static AgentMonitor INSTANCE;
+
     private String idUser = "";
-    private int type;
+    public int type;
     public ArrayList<String> dates;
     public ListDuo takes;
 
@@ -31,6 +33,7 @@ public class AgentMonitor {
         this.type = 0;
         dates = new ArrayList<String>();
         takes = new ListDuo();
+        INSTANCE = this;
     }
 
 
