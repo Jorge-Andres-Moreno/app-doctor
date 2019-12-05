@@ -9,17 +9,11 @@
             android:id="@+id/profile"
             android:title="MI CUENTA" />
         <item
-            android:id="@+id/payment"
-            android:title="MÉTODO DE PAGO" />
-        <item
             android:id="@+id/help"
             android:title="AYUDA" />
         <item
             android:id="@+id/logout"
             android:title="CERRAR SESIÓN" />
-        <item
-            android:id="@+id/monitorieo"
-            android:title="Monitoreo"/>
     </group>
 
 </menu>

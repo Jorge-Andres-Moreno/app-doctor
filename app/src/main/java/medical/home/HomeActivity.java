@@ -124,22 +124,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 in = new Intent(this, ProfileActivity.class);
                 startActivity(in);
                 break;
-/*
-            case R.id.agenda:
-                Toast.makeText(this, "Agenda",Toast.LENGTH_LONG);
-                break;
-*/
-            case R.id.payment:
-                Toast.makeText(this, "Payment", Toast.LENGTH_LONG);
-                /*in = new Intent(HomeActivity.this, PaymentMethodActivity.class);
-                startActivity(in);*/
-                break;
 
-            case R.id.monitorieo:
-                Toast.makeText(this, "Payment", Toast.LENGTH_LONG);
-                in = new Intent(HomeActivity.this, MonitorActivity.class);
-                startActivity(in);
-                break;
             case R.id.help:
                 Toast.makeText(this, "Help", Toast.LENGTH_LONG);
                 in = new Intent(HomeActivity.this, HelpActivity.class);
