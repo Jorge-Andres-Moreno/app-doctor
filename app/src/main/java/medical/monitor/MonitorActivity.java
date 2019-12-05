@@ -42,7 +42,7 @@ public class MonitorActivity extends Activity implements DefaultCallback {
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(adapter);
 
-        agent.getMonitoringDates(true, false, this);
+        agent.getMonitoringDates(this);
 
     }
 

@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.R;
 
+import medical.utils.DefaultCallback;
+
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
 
     private AgentMonitor agent;
-    private Activity activity;
+    private MonitorActivity activity;
 
-    public DateAdapter(AgentMonitor agent, Activity activity) {
+    public DateAdapter(AgentMonitor agent, MonitorActivity activity) {
         this.agent = agent;
         this.activity = activity;
     }
@@ -31,7 +33,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
     @Override
     public void onBindViewHolder(@NonNull DateHolder holder, int position) {
         holder.position = position;
-        holder.textView.setText(agent.dates.get(position)+"");
+        holder.textView.setText(agent.dates.get(position) + "");
     }
 
     @Override
@@ -54,6 +56,16 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
 
         @Override
         public void onClick(View v) {
+            agent.getDataMonitorDate(agent.dates.get(position), new DefaultCallback() {
+                @Override
+                public void onFinishProcess(boolean hasSucceeded, Object result) {
+                    if (hasSucceeded) {
+                        //VALLA PARA EL NUEVO ACTIVY
+                    } else {
+                        //MUESTRE EL ERROR
+                    }
+                }
+            });
 //            Intent in = new Intent(activity, MonitorActivity.class);
 //            in.putExtra("id", agent.dates.get(position));
 //            in.putExtra("fecha", agent.dates.get(position));

@@ -13,7 +13,11 @@ import com.android.myapplication.R;
 
 public class ProfileActivity extends Activity {
 
-    EditText nombre, correo, cedula, especialidad, telefono;
+    private EditText nombre;
+    private EditText correo;
+    private EditText cedula;
+    private EditText especialidad;
+    private EditText telefono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,8 @@ public class ProfileActivity extends Activity {
         nombre = findViewById(R.id.nombre);
         correo = findViewById(R.id.correo);
         cedula = findViewById(R.id.cedula);
-        especialidad = findViewById(R.id.especialidad);
-        telefono = findViewById(R.id.telefono);
+//        especialidad = findViewById(R.id.especialidad);
+//        telefono = findViewById(R.id.telefono);
 
     }
 
