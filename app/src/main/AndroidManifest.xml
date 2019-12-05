@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name="medical.monitoreo.MonitoringActivity"/>
+        <activity android:name="medical.monitor.MonitorActivity"/>
         <activity
             android:name="medical.login.SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -29,7 +29,6 @@
         <activity
             android:name="medical.login.LoginActivity"
             android:screenOrientation="portrait"
-
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="medical.home.HomeActivity"

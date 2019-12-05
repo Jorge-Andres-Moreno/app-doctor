@@ -28,11 +28,16 @@
     <string name="option3">Reclamos</string>
     <string name="sendmail">Enviar</string>
 
+    <string name="fecha">2019/04/05</string>
+
 
     <string name="monitoringtext">Monitoreo</string>
 
 
     <string name="Home">INICIO</string>
+    <string name="List_patients">Lista de pacientes</string>
+    <string name="list_Dates">Fechas Monitoreadas</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

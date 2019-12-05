@@ -26,13 +26,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true" />
 
-            <medical.home.CustomViewPager
-                android:id="@+id/view_pager"
+            <TextView
+                android:paddingVertical="@dimen/margin_large"
+                android:layout_width="match_parent"
+                android:paddingLeft="@dimen/margin_large"
+                android:textSize="@dimen/text_size_large"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="@color/red_soft"
+                android:text="@string/List_patients"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_patients"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/header"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true" />
+                android:paddingHorizontal="@dimen/text_size_xxs"/>
 
         </LinearLayout>
 

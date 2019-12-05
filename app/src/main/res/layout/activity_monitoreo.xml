@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -32,21 +33,30 @@
                 android:paddingBottom="15dp">
 
                 <ImageView
-                    android:id="@+id/backlayout"
+                    android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/backl"
+                    android:src="@drawable/back"
                     android:tint="@color/white" />
             </LinearLayout>
-
         </RelativeLayout>
-
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/mostrado"
+        android:paddingVertical="@dimen/margin_large"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TextView" />
+        android:paddingLeft="@dimen/margin_large"
+        android:textSize="@dimen/text_size_large"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_regular"
+        android:background="@color/red_soft"
+        android:text="@string/list_Dates"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_fechas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

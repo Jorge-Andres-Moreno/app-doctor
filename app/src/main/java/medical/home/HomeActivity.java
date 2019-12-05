@@ -1,7 +1,6 @@
 package medical.home;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,21 +15,28 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
 import medical.help.HelpActivity;
 import medical.login.LoginActivity;
-import medical.monitoreo.MonitoringActivity;
+import medical.monitor.MonitorActivity;
 import medical.profile.ProfileActivity;
 import medical.login.AgentLogin;
+import medical.utils.DefaultCallback;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
-    private CustomViewPager pager;
+    private PatientAdapter adapter;
+    private RecyclerView recycler;
+    private AgentHome agent;
     private TextView title;
+
+    //private RotateLoading loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +59,42 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.nameUserNav);
 
-        pager = findViewById(R.id.view_pager);
-        pager.setPagingEnabled(false);
-
         title = findViewById(R.id.title);
 
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue_strong));
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue_strong));
+
+        agent = new AgentHome();
+
+        adapter = new PatientAdapter(agent, this);
+        recycler = findViewById(R.id.recycler_patients);
+        recycler.setHasFixedSize(true);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setAdapter(adapter);
+
+
+        //loader = findViewById(R.id.loader);
+        //loader.start();
+
+        agent.getPatientList(new DefaultCallback() {
+            @Override
+            public void onFinishProcess(final boolean hasSucceeded, Object result) {
+                if (hasSucceeded)
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (hasSucceeded) {
+                                adapter.notifyDataSetChanged();
+                            }else{
+                                Toast.makeText(getApplicationContext(),"no data",Toast.LENGTH_SHORT);
+                            }
+                            //loader.stop();
+                        }
+                    });
+            }
+        });
 
     }
 
@@ -74,15 +107,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
     }
 
-    public void homepacientes(){
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-        String Id ="";
-        String nombre ="";
-
-        //Intent i = new Intent(this, Ejercicio_2_2.class);
-        //i.putExtra("rond1_1", et_1.getText().toString());
-        //startActivity(i);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -107,12 +137,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.monitorieo:
                 Toast.makeText(this, "Payment", Toast.LENGTH_LONG);
-                in = new Intent(HomeActivity.this, MonitoringActivity.class);
+                in = new Intent(HomeActivity.this, MonitorActivity.class);
                 startActivity(in);
                 break;
             case R.id.help:
                 Toast.makeText(this, "Help", Toast.LENGTH_LONG);
-
                 in = new Intent(HomeActivity.this, HelpActivity.class);
                 startActivity(in);
                 break;

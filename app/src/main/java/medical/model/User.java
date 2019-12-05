@@ -6,16 +6,15 @@ public class User {
 
     //{"email":"mix7reload@gmail.com ","id":"0EaBsE2IitYHgz52mNOXmWp4Jey2","nombre":"Edgar Andres Angrino","telefono":31555555555}
 
-    private String email = "";
-    private String id = "";
-    private String nombre = "";
-    private int telefono = 0;
-    private String especialidad = "";
-    private ArrayList<Patients> pacientes;
+    private String email;
+    private String id;
+    private String nombre;
+    private int telefono;
+    private String especialidad;
     private String cedula;
 
     public User() {
-        pacientes = new ArrayList<>();
+
     }
 
     public String getId() {
@@ -64,14 +63,6 @@ public class User {
 
     public String getCedula() {
         return cedula;
-    }
-
-    public ArrayList<Patients> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(ArrayList<Patients> pacientes) {
-        this.pacientes = pacientes;
     }
 
 }

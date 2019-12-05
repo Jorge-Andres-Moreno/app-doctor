@@ -1,9 +1,9 @@
 package medical.model;
 
-public class Patients {
+public class Patient {
 
-    String id ="";
-    String nombre="";
+    String id;
+    String nombre;
 
     public String getId() {
         return id;

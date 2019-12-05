@@ -1,9 +1,11 @@
-package medical.monitoreo;
+package medical.monitor;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import medical.utils.DefaultCallback;
@@ -14,9 +16,18 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AgentMonitoring {
+public class AgentMonitor {
 
-    public void getMonitoringData(final String id, final String pulso, final String ecgr, final DefaultCallback notify) {
+    private String idUser = "";
+    public ArrayList<String> dates;
+
+    public AgentMonitor(String idUser){
+        this.idUser = idUser;
+        dates = new ArrayList<String>();
+    }
+
+
+    public void getMonitoringDates(final boolean pulso, final boolean ecg, final DefaultCallback notify) {
 
         new Thread(new Runnable() {
             @Override
@@ -28,13 +39,13 @@ public class AgentMonitoring {
                             .build();
 
                     RequestBody body = new FormBody.Builder()
-                            .add("id", id)
-                            .add("pulso", pulso)
-                            .add("ecg", ecgr)
+                            .add("id", idUser)
+                            .add("pulso", pulso+"")
+                            .add("ecg", ecg+"")
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITORING)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITOR_DATES)
                             .post(body)
                             .build();
 
@@ -43,7 +54,15 @@ public class AgentMonitoring {
                     if (response.code() == 200) {
 
                         JSONObject object = new JSONObject(response.body().string());
-                        Log.i("Visaje: ",object.getString("pulso"));
+
+                        Log.i("Visaje: ",object.toString());
+                        JSONArray array = object.getJSONArray("tomas");
+
+                        dates = new ArrayList<String>();
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject aux = new JSONObject(array.get(i).toString());
+                            dates.add(aux.getString("fecha"));
+                        }
 
                         notify.onFinishProcess(true, "success");
                     } else {

@@ -1,7 +1,6 @@
 package medical.login;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -10,13 +9,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import medical.model.Patients;
 import medical.utils.DefaultCallback;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
@@ -89,7 +85,7 @@ public class AgentLogin {
                     if (response.code() == 200) {
 
                         JSONObject object = new JSONObject(response.body().string());
-                        //Log.i("Verga", object + "");
+
                         User user = new User();
                         user.setCedula(object.getString("cedula"));
                         user.setEmail(object.getString("email"));

@@ -14,6 +14,7 @@ public class LocalDataBase {
 
     public LocalDataBase(Context context) {
         preferences = context.getSharedPreferences("MedicalDoctor", 0);
+        INSTANCE = this;
         loadUser();
     }
 

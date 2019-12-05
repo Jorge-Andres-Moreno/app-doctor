@@ -4,10 +4,14 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import medical.model.LocalDataBase;
+import medical.model.Patient;
 import medical.utils.DefaultCallback;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
@@ -18,13 +22,16 @@ import okhttp3.Response;
 
 public class AgentHome {
 
+    public ArrayList<Patient> pacientes;
 
-    private FirebaseAuth firebaseAuth;
+    public AgentHome() {
+        pacientes = new ArrayList<>();
+        pacientes.add(new Patient());
+    }
 
-    public void getPatientList(final String reason, final String name, final DefaultCallback notify) {
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        final String uid = firebaseAuth.getUid();
+    public void getPatientList(final DefaultCallback notify) {
+
 
         new Thread(new Runnable() {
             @Override
@@ -36,12 +43,11 @@ public class AgentHome {
                             .build();
 
                     RequestBody body = new FormBody.Builder()
-                            .add("id", uid)
-                            .add("name", reason)
+                            .add("id", LocalDataBase.getInstance(null).getUser().getId())
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_HELP)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_PATIENT)
                             .post(body)
                             .build();
 
@@ -50,8 +56,17 @@ public class AgentHome {
                     if (response.code() == 200) {
 
                         JSONObject object = new JSONObject(response.body().string());
-                        Log.i("Visaje: ",object.getString("pacientes"));
 
+                        JSONArray array = object.getJSONArray("pacientes");
+
+                        pacientes = new ArrayList<Patient>();
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject aux = new JSONObject(array.get(i).toString());
+                            Patient paciente = new Patient();
+                            paciente.setId(aux.getString("id"));
+                            paciente.setNombre(aux.getString("nombre"));
+                            pacientes.add(paciente);
+                        }
 
                         notify.onFinishProcess(true, "success");
                     } else {

@@ -1,12 +1,15 @@
 package medical.help;
 
-import com.google.firebase.auth.FirebaseAuth;
+
+import org.json.JSONObject;
 
 import java.util.concurrent.TimeUnit;
 
+import medical.model.LocalDataBase;
 import medical.utils.DefaultCallback;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -14,12 +17,7 @@ import okhttp3.Response;
 
 public class AgentHelp {
 
-    private FirebaseAuth firebaseAuth;
-
     public void sendMessageSupport(final String reason, final String message, final DefaultCallback notify) {
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        final String uid = firebaseAuth.getUid();
 
         new Thread(new Runnable() {
             @Override
@@ -30,14 +28,20 @@ public class AgentHelp {
                             .readTimeout(15, TimeUnit.SECONDS)
                             .build();
 
-                    RequestBody body = new FormBody.Builder()
-                            .add("userId", uid)
-                            .add("reason", reason)
-                            .add("name", message)
-                            .add("phone", message)
-                            .add("type", message)
-                            .add("email", message)
-                            .build();
+                    JSONObject jsonBody = new JSONObject();
+                    jsonBody.put("razon",reason);
+                    jsonBody.put("mensaje",message);
+                    jsonBody.put("nombre", LocalDataBase.getInstance(null).getUser().getNombre());
+                    jsonBody.put("email",LocalDataBase.getInstance(null).getUser().getEmail());
+                    jsonBody.put("id",LocalDataBase.getInstance(null).getUser().getId());
+
+                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                    RequestBody body = RequestBody.create(JSON, jsonBody.toString());
+
+//                    RequestBody body = new FormBody.Builder()
+//                            .add("reason", message)
+//                            .add("type", reason)
+//                            .build();
 
                     Request request = new Request.Builder()
                             .url(NetworkConstants.URL + NetworkConstants.PATH_HELP)
@@ -46,7 +50,7 @@ public class AgentHelp {
 
                     Response response = okhttp.newCall(request).execute();
 
-                    if (response.isSuccessful()) {
+                    if (response.code() == 200) {
                         notify.onFinishProcess(true, "success");
                     } else {
                         notify.onFinishProcess(false, "Error intente nuevamente");
