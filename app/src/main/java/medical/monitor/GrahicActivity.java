@@ -2,18 +2,15 @@ package medical.monitor;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.android.myapplication.R;
 
-import medical.graphicecg.LineGraph;
-import medical.utils.DefaultCallback;
+import medical.utils.LineGraph;
 import medical.utils.ListDuo;
 
 import org.achartengine.GraphicalView;

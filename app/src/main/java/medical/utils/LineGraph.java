@@ -1,4 +1,4 @@
-package medical.graphicecg;
+package medical.utils;
 
 import android.content.Context;
 import android.graphics.Color;
