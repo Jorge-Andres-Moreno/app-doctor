@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import medical.model.LocalDataBase;
+import medical.model.MonitorTake;
 import medical.utils.DefaultCallback;
 import medical.utils.ListDuo;
 import medical.utils.NetworkConstants;
@@ -22,17 +23,16 @@ public class AgentMonitor {
 
     public static AgentMonitor INSTANCE;
 
-    private String idUser = "";
     public int type;
+    private String idUser;
     public ArrayList<String> dates;
-    public ListDuo takes;
+    public MonitorTake take;
 
 
     public AgentMonitor(String idUser) {
         this.idUser = idUser;
         this.type = 0;
         dates = new ArrayList<String>();
-        takes = new ListDuo();
         INSTANCE = this;
     }
 
@@ -48,6 +48,9 @@ public class AgentMonitor {
                             .readTimeout(15, TimeUnit.SECONDS)
                             .build();
 
+                    Log.i("ID",idUser);
+                    Log.i("type",type+"");
+
                     RequestBody body = new FormBody.Builder()
                             .add("id", idUser)
                             .add("type", type + "")
@@ -59,18 +62,20 @@ public class AgentMonitor {
                             .build();
 
                     Response response = okhttp.newCall(request).execute();
-
+                    Log.i("takes",response.code()+"");
                     if (response.code() == 200) {
-
+                        Log.i("takes","epa2");
                         JSONObject object = new JSONObject(response.body().string());
 
                         JSONArray array = object.getJSONArray("tomas");
 
                         dates = new ArrayList<String>();
+                        Log.i("takes","epa3");
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject aux = new JSONObject(array.get(i).toString());
                             dates.add(aux.getString("fecha"));
                         }
+
 
                         notify.onFinishProcess(true, "success");
                     } else {
@@ -98,12 +103,12 @@ public class AgentMonitor {
 
                     RequestBody body = new FormBody.Builder()
                             .add("id", idUser)
-                            .add("type", type+"")
+                            .add("type", type + "")
                             .add("date", date)
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITORING)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITOR_DATA)
                             .post(body)
                             .build();
 
@@ -114,20 +119,29 @@ public class AgentMonitor {
 
                         JSONObject object = new JSONObject(response.body().string());
 
-                        JSONArray array = object.getJSONArray("pulso");
+                        JSONObject monitor = object.getJSONObject(type == 0 ? "pulso" : "ecg");
 
-                        takes = new ListDuo();
+                        take = new MonitorTake();
+                        take.setDate(date);
+                        take.setType(type);
+                        take.setTime_start(monitor.getString("horaInicio"));
+                        take.setTime_finish(monitor.getString("horaFin"));
+                        take.setDuration(monitor.getString("duracion"));
+                        take.setTime_pos_start(monitor.getString("horaInicio1"));
+                        take.setTime_pos_finish(monitor.getString("horaFin1"));
 
-                        for (int i = 0; i < array.length(); i++) {
+                        JSONArray val_1 = monitor.getJSONArray("valoresPulso");
 
-                            JSONArray auxArray =  array.getJSONArray(i);
-                            String fecha =  auxArray.get(0).toString();
-                            String valor =  auxArray.get(1).toString();
+                        for (int i = 0; i < val_1.length(); i++)
+                            take.getTakes_1().add(val_1.getInt(i));
 
-                            takes.add(fecha,valor);
-                        }
+                        JSONArray val_2 = monitor.getJSONArray("valoresPulso2");
 
-                        Log.i("COUNT_TAKES",takes.size()+"");
+                        for (int i = 0; i < val_2.length(); i++)
+                            take.getTakes_2().add(val_2.getInt(i));
+
+                        Log.i("takes_1", take.getTakes_1().size() + "");
+                        Log.i("takes_2", take.getTakes_2().size() + "");
 
                         notify.onFinishProcess(true, "success");
                     } else {

@@ -1,7 +1,8 @@
 package medical.home;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.myapplication.R;
 
 import medical.monitor.AgentMonitor;
-import medical.monitor.MonitorActivity;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
 
@@ -28,14 +28,17 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
     @NonNull
     @Override
     public PatientHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_section, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_patient, parent, false);
         return new PatientHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PatientHolder holder, int position) {
         holder.position = position;
-        holder.textView.setText(agent.pacientes.get(position).getNombre());
+        holder.name.setText(agent.pacientes.get(position).getName());
+        holder.age.setText(agent.pacientes.get(position).getAge());
+        holder.risk.setText(agent.pacientes.get(position).getRisk());
+        holder.diagnostic.setText(agent.pacientes.get(position).getDiagnostic());
     }
 
     @Override
@@ -48,22 +51,28 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
 
         public int position;
 
-        private TextView textView;
+        private TextView name;
+        private TextView age;
+        private TextView risk;
+        private TextView diagnostic;
+
 
         public PatientHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.name);
+            name = itemView.findViewById(R.id.name);
+            age = itemView.findViewById(R.id.age);
+            risk = itemView.findViewById(R.id.risk);
+            diagnostic = itemView.findViewById(R.id.diagnostic);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            new AgentMonitor(agent.pacientes.get(position).getId());
-            DialogSelectParameter dialogSelectParameter = new DialogSelectParameter(activity);
+            agent.select = agent.pacientes.get(position);
+            new AgentMonitor(agent.pacientes.get(position).getUID());
+            DialogSelectParameter dialogSelectParameter = new DialogSelectParameter(activity, agent);
+            dialogSelectParameter.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialogSelectParameter.show();
-//            Intent in = new Intent(activity, MonitorActivity.class);
-//            in.putExtra("id",agent.pacientes.get(position).getId());
-//            activity.startActivity(in);
         }
     }
 

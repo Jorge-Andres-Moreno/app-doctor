@@ -24,6 +24,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/text_size_large"
+                    android:background="@drawable/rounded_circle_white"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -52,7 +53,7 @@
                             android:text="Selecciona el parametro"
                             android:fontFamily="@font/montserrat_medium"
                             android:textColor="@color/blue_strong"
-                            android:textSize="@dimen/text_size_small" />
+                            android:textSize="@dimen/text_size_normal" />
                     </RelativeLayout>
 
 
@@ -74,14 +75,6 @@
                             android:layout_width="@dimen/size_m"
                             android:layout_height="@dimen/size_m"/>
 
-                        <CheckBox
-                            android:id="@+id/ecgCheck"
-                            android:theme="@style/checkBoxStyle"
-                            android:layout_width="@dimen/size_m"
-                            android:layout_height="@dimen/size_m"
-                            android:layout_below="@id/pulsoCheck"
-                            android:layout_marginTop="@dimen/text_size_large" />
-
                         <TextView
                             android:id="@+id/imediateText"
                             android:layout_width="wrap_content"
@@ -96,6 +89,15 @@
                             android:textSize="@dimen/text_size_medium"
                             android:textColor="@color/gray_strong" />
 
+                        <CheckBox
+                            android:id="@+id/ecgCheck"
+                            android:theme="@style/checkBoxStyle"
+                            android:layout_width="@dimen/size_m"
+                            android:layout_height="@dimen/size_m"
+                            android:layout_below="@id/pulsoCheck"
+                            android:layout_marginTop="@dimen/text_size_large" />
+
+
                         <TextView
                             android:id="@+id/scheduleText"
                             android:layout_width="wrap_content"
@@ -108,6 +110,30 @@
                             android:textSize="@dimen/text_size_medium"
                             android:fontFamily="@font/montserrat_regular"
                             android:text="ECG"
+                            android:textColor="@color/gray_strong" />
+
+
+                        <CheckBox
+                            android:id="@+id/info_check"
+                            android:theme="@style/checkBoxStyle"
+                            android:layout_width="@dimen/size_m"
+                            android:layout_height="@dimen/size_m"
+                            android:layout_below="@id/ecgCheck"
+                            android:layout_marginTop="@dimen/text_size_large" />
+
+
+                        <TextView
+                            android:id="@+id/info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/info_check"
+                            android:layout_alignBottom="@id/info_check"
+                            android:layout_marginLeft="@dimen/margin_small"
+                            android:layout_toRightOf="@id/info_check"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/text_size_medium"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/info"
                             android:textColor="@color/gray_strong" />
 
                     </RelativeLayout>

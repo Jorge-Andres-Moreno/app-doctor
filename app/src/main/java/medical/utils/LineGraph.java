@@ -12,15 +12,19 @@ import org.achartengine.renderer.XYSeriesRenderer;
 
 public class LineGraph {
 
+
+    //version Cristian
+
     private GraphicalView mchart;
     private XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
     private XYMultipleSeriesRenderer mRender = new XYMultipleSeriesRenderer();
     private XYSeries mCurrentSeries;
     private XYSeriesRenderer mCurrentRenderer;
 
-    ////
 
     public LineGraph() {
+
+        // version Cristian
 
         mCurrentSeries = new XYSeries("");
         mDataset.addSeries(mCurrentSeries);
@@ -30,9 +34,9 @@ public class LineGraph {
         mRender.setShowGrid(true);
         mRender.setGridColor(Color.BLACK);
         mRender.setMarginsColor(Color.GREEN);
-        mRender.setXAxisMax(20);
+        mRender.setXAxisMax(60);
         mRender.setXAxisMin(0);
-        mRender.setYAxisMax(20);
+        mRender.setYAxisMax(150);
         mRender.setYAxisMin(0);
         mRender.setPanEnabled(false);
         mRender.setLabelsTextSize(25);
@@ -40,10 +44,10 @@ public class LineGraph {
         mRender.setYLabelsColor(0, Color.BLACK);
         mRender.setXLabelsColor(Color.BLACK);
         mRender.setXTitle("Tiempo [s]");
-        mRender.setYTitle("Pulso [f.c]");
+        mRender.setYTitle("pulsaciones por minuto");
         mRender.setAxisTitleTextSize(50);
         mRender.setLabelsColor(Color.BLACK);
-        mRender.setXLabels(20);
+        //  mRender.setXLabels(20);
         mRender.setMargins(new int[]{80, 80, 80, 80});
         mRender.addSeriesRenderer(mCurrentRenderer);
 
@@ -54,9 +58,10 @@ public class LineGraph {
         return mchart;
     }
 
-    public void addCoordenada(double x, double y) {
 
+    public void addCoordenada(double x, double y) {
         mCurrentSeries.add(x, y);
     }
+
 
 }

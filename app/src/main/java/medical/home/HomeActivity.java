@@ -56,8 +56,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        agent = new AgentHome();
+
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = headerView.findViewById(R.id.nameUserNav);
+        navUsername.setText(agent.getLocalDB().getUser().getName());
 
         title = findViewById(R.id.title);
 
@@ -66,7 +69,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.blue_strong));
 
-        agent = new AgentHome();
 
         adapter = new PatientAdapter(agent, this);
         recycler = findViewById(R.id.recycler_patients);
@@ -87,8 +89,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         public void run() {
                             if (hasSucceeded) {
                                 adapter.notifyDataSetChanged();
-                            }else{
-                                Toast.makeText(getApplicationContext(),"no data",Toast.LENGTH_SHORT);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "no data", Toast.LENGTH_SHORT);
                             }
                             //loader.stop();
                         }

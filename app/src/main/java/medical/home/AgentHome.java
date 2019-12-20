@@ -3,6 +3,7 @@ package medical.home;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,9 +25,18 @@ public class AgentHome {
 
     public ArrayList<Patient> pacientes;
 
+    public Patient select;
+
     public AgentHome() {
         pacientes = new ArrayList<>();
-        pacientes.add(new Patient());
+    }
+
+    public LocalDataBase getLocalDB() {
+        return LocalDataBase.getInstance(null);
+    }
+
+    public String serializePatient(){
+        return (new Gson()).toJson(select, Patient.class);
     }
 
 
@@ -43,7 +53,7 @@ public class AgentHome {
                             .build();
 
                     RequestBody body = new FormBody.Builder()
-                            .add("id", LocalDataBase.getInstance(null).getUser().getId())
+                            .add("id", LocalDataBase.getInstance(null).getUser().getUID())
                             .build();
 
                     Request request = new Request.Builder()
@@ -62,10 +72,36 @@ public class AgentHome {
                         pacientes = new ArrayList<Patient>();
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject aux = new JSONObject(array.get(i).toString());
-                            Patient paciente = new Patient();
-                            paciente.setId(aux.getString("id"));
-                            paciente.setNombre(aux.getString("nombre"));
-                            pacientes.add(paciente);
+                            JSONObject inf = aux.getJSONObject("informacion");
+
+                            Patient patient = new Patient();
+                            patient.setUID(inf.getString("id"));
+                            patient.setName(inf.getString("nombre"));
+                            patient.setId(inf.getString("cedula"));
+                            patient.setBirth(inf.getString("fecha_nacimiento"));
+                            patient.setAge(inf.getString("edad"));
+                            patient.setRisk(inf.getString("riesgo"));
+                            patient.setDiagnostic(inf.getString("diagnostico"));
+                            patient.setEmail(inf.getString("email"));
+                            patient.setMobile_number(inf.getString("celular"));
+
+                            try {
+                                patient.setTelephone(inf.getString("telefono"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            patient.setState(inf.getString("departamento"));
+                            patient.setCity(inf.getString("ciudad"));
+                            patient.setAddress(inf.getString("direccion"));
+                            patient.setRef(inf.getString("ref"));
+
+                            JSONObject inf_contact = inf.getJSONObject("contacto");
+                            patient.setName_contact(inf_contact.getString("nombre"));
+                            patient.setTelephone_contact(inf_contact.getString("telefono"));
+                            patient.setRelation(inf_contact.getString("parentesco"));
+
+                            pacientes.add(patient);
                         }
 
                         notify.onFinishProcess(true, "success");
