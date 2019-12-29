@@ -1,13 +1,21 @@
 package medical.login;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.android.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONObject;
 
@@ -49,7 +57,20 @@ public class AgentLogin {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //saveUIDLogin();
-                            getUserData(callback);
+                            FirebaseInstanceId.getInstance().getInstanceId()
+                                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                            if (!task.isSuccessful()) {
+                                                Log.w("failed", "getInstanceId failed", task.getException());
+                                                callback.onFinishProcess(false, null);
+                                            } else {
+                                                // Get new Instance ID token
+                                                String token = task.getResult().getToken();
+                                                getUserData(callback, token);
+                                            }
+                                        }
+                                    });
                         } else
                             callback.onFinishProcess(false, null);
                     }
@@ -58,7 +79,7 @@ public class AgentLogin {
         }).start();
     }
 
-    private void getUserData(final DefaultCallback callback) {
+    private void getUserData(final DefaultCallback callback, final String token) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -71,9 +92,9 @@ public class AgentLogin {
 
                     RequestBody body = new FormBody.Builder()
                             .add("type", "1")
+                            .add("token", token)
                             .add("id", firebaseAuth.getInstance().getCurrentUser().getUid() + "")
                             .build();
-
 
                     Request request = new Request.Builder()
                             .url(NetworkConstants.URL + NetworkConstants.PATH_PROFILE)
@@ -88,6 +109,10 @@ public class AgentLogin {
 
                         User user = new User();
                         user.setUID(object.getString("id"));
+                        user.setToken(object.getString("token"));
+
+                        Log.i("token", user.getToken());
+
                         user.setName(object.getString("nombre"));
                         user.setId(object.getString("cedula"));
                         user.setProfession(object.getString("profesion"));

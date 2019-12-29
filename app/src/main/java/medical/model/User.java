@@ -8,6 +8,7 @@ public class User {
      * User Data
      */
     private String UID;
+    private String token;
     private String name;
     private String id;
     private String profession;
@@ -140,5 +141,13 @@ public class User {
 
     public void setRef(String ref) {
         this.ref = ref;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

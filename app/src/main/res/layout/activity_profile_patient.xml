@@ -139,6 +139,50 @@
                 android:backgroundTint="@color/blue_strong"
                 android:hint="@string/age_example"
                 android:maxLines="1"
+                android:nextFocusDown="@id/height"
+                android:textColor="@color/blue_strong"
+                android:textSize="@dimen/text_size_medium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:paddingStart="@dimen/size_xxs"
+                android:text="@string/height_1"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/size_xxs"
+                android:layout_marginTop="@dimen/margin_default"
+                android:backgroundTint="@color/blue_strong"
+                android:hint="@string/age_example"
+                android:maxLines="1"
+                android:nextFocusDown="@id/weight"
+                android:textColor="@color/blue_strong"
+                android:textSize="@dimen/text_size_medium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:paddingStart="@dimen/size_xxs"
+                android:text="@string/weight_1"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/size_xxs"
+                android:layout_marginTop="@dimen/margin_default"
+                android:backgroundTint="@color/blue_strong"
+                android:hint="@string/age_example"
+                android:maxLines="1"
                 android:nextFocusDown="@id/risk"
                 android:textColor="@color/blue_strong"
                 android:textSize="@dimen/text_size_medium" />

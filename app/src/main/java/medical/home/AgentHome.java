@@ -84,6 +84,8 @@ public class AgentHome {
                             patient.setDiagnostic(inf.getString("diagnostico"));
                             patient.setEmail(inf.getString("email"));
                             patient.setMobile_number(inf.getString("celular"));
+                            patient.setWeight(inf.getString("altura"));
+                            patient.setHeight(inf.getString("peso"));
 
                             try {
                                 patient.setTelephone(inf.getString("telefono"));

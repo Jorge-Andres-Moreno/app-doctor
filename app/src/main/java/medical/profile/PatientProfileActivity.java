@@ -28,6 +28,9 @@ public class PatientProfileActivity extends AppCompatActivity {
     private TextView state;
     private TextView city;
     private TextView address;
+    private TextView weight;
+    private TextView height;
+
     private TextView password;
     private TextView password_confirm;
 
@@ -87,6 +90,13 @@ public class PatientProfileActivity extends AppCompatActivity {
         city.setText(agent.patient.getCity());
         address = findViewById(R.id.address);
         address.setText(agent.patient.getAddress());
+
+        weight = findViewById(R.id.weight);
+        weight.setText(agent.patient.getWeight());
+
+        height = findViewById(R.id.height);
+        height.setText(agent.patient.getHeight());
+
 
         // init contact attributes
         name_contact = findViewById(R.id.name_contact);

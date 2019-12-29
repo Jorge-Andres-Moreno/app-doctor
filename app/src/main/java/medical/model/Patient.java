@@ -18,6 +18,8 @@ public class Patient {
     private String state;
     private String city;
     private String address;
+    private String weight;
+    private String height;
 
     /**
      * Contact Data
@@ -162,5 +164,21 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
     }
 }
