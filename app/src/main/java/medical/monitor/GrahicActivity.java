@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class GrahicActivity extends Activity {
 
 
-    private AgentMonitor agent;
+    private AgentPulso agent;
 
 
     private static GraphicalView view;
@@ -46,7 +46,7 @@ public class GrahicActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphic);
 
-        agent = AgentMonitor.INSTANCE;
+        agent = AgentPulso.INSTANCE;
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -62,14 +62,14 @@ public class GrahicActivity extends Activity {
         view1 = line1.getView(this);
         linearLayout2.addView(view1);
 
-        lblPulso1 = findViewById(R.id.PulsoPromedio1);
-        lblPulso2 = findViewById(R.id.PulsoPromedio2);
-        lblHoraInicio1 = findViewById(R.id.HoraInicio1);
-        lblHoraInicio2 = findViewById(R.id.HoraInicio2);
-        lblHoraFin1 = findViewById(R.id.HoraFin1);
-        lblHoraFin2 = findViewById(R.id.HoraFin2);
-        lblduracion1 = findViewById(R.id.duracion1);
-        lblduracion2 = findViewById(R.id.duracion2);
+//        lblPulso1 = findViewById(R.id.PulsoPromedio1);
+//        lblPulso2 = findViewById(R.id.PulsoPromedio2);
+//        lblHoraInicio1 = findViewById(R.id.HoraInicio1);
+//        lblHoraInicio2 = findViewById(R.id.HoraInicio2);
+//        lblHoraFin1 = findViewById(R.id.HoraFin1);
+//        lblHoraFin2 = findViewById(R.id.HoraFin2);
+//        lblduracion1 = findViewById(R.id.duracion1);
+//        lblduracion2 = findViewById(R.id.duracion2);
 inicializarGrafica();
 
 //        ListDuo listDuo = agent.takes;

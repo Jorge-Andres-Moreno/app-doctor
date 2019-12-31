@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.myapplication.R;
 
-import medical.monitor.AgentMonitor;
+import medical.monitor.AgentPulso;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientHolder> {
 
@@ -69,7 +69,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientH
         @Override
         public void onClick(View v) {
             agent.select = agent.pacientes.get(position);
-            new AgentMonitor(agent.pacientes.get(position).getUID());
+            new AgentPulso(agent.pacientes.get(position).getUID());
             DialogSelectParameter dialogSelectParameter = new DialogSelectParameter(activity, agent);
             dialogSelectParameter.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialogSelectParameter.show();

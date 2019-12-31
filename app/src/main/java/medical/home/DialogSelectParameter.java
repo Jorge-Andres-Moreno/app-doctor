@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import com.android.myapplication.R;
 
-import medical.monitor.AgentMonitor;
+import medical.monitor.AgentPulso;
 import medical.monitor.MonitorActivity;
 import medical.profile.PatientProfileActivity;
 
@@ -117,7 +117,7 @@ public class DialogSelectParameter extends Dialog implements View.OnClickListene
 
             case R.id.actionButton:
                 if (pulsoBox.isChecked() || ecgBox.isChecked()) {
-                    AgentMonitor.INSTANCE.type = pulsoBox.isChecked() ? 0 : 1;
+                    AgentPulso.INSTANCE.type = pulsoBox.isChecked() ? 0 : 1;
                     Intent in = new Intent(v.getContext(), MonitorActivity.class);
                     v.getContext().startActivity(in);
                     this.dismiss();

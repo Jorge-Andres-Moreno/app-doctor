@@ -8,10 +8,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import medical.model.LocalDataBase;
 import medical.model.MonitorTake;
 import medical.utils.DefaultCallback;
-import medical.utils.ListDuo;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -19,9 +17,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AgentMonitor {
+public class AgentPulso {
 
-    public static AgentMonitor INSTANCE;
+    public static AgentPulso INSTANCE;
 
     public int type;
     private String idUser;
@@ -29,7 +27,7 @@ public class AgentMonitor {
     public MonitorTake take;
 
 
-    public AgentMonitor(String idUser) {
+    public AgentPulso(String idUser) {
         this.idUser = idUser;
         this.type = 0;
         dates = new ArrayList<String>();

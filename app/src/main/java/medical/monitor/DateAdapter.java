@@ -1,6 +1,5 @@
 package medical.monitor;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +16,10 @@ import medical.utils.DefaultCallback;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
 
-    private AgentMonitor agent;
+    private AgentPulso agent;
     private MonitorActivity activity;
 
-    public DateAdapter(AgentMonitor agent, MonitorActivity activity) {
+    public DateAdapter(AgentPulso agent, MonitorActivity activity) {
         this.agent = agent;
         this.activity = activity;
     }
