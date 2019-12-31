@@ -1,11 +1,11 @@
-package medical.monitor;
+package medical.goals;
 
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import medical.model.MonitorTake;
@@ -17,30 +17,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AgentPulso {
+public class AgentGoal {
 
-    public static AgentPulso INSTANCE;
+    private static AgentGoal INSTANCE;
 
-    public int type;
-    private String idUser;
-    public ArrayList<String> dates;
+    public String idUser;
     public MonitorTake take;
-    public String fecha;
 
-
-    public AgentPulso(String idUser) {
-        this.idUser = idUser;
-        this.type = 0;
-        dates = new ArrayList<String>();
+    public AgentGoal() {
         INSTANCE = this;
+        this.idUser = "";
+    }
+
+    public static AgentGoal getInstance() {
+        return INSTANCE == null ? (new AgentGoal()) : INSTANCE;
     }
 
 
-    public AgentPulso() {
-    }
-
-    public void getMonitoringDates(final DefaultCallback notify) {
-
+    public void getMetas(final DefaultCallback notify) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,48 +44,50 @@ public class AgentPulso {
                             .readTimeout(15, TimeUnit.SECONDS)
                             .build();
 
-                    Log.i("ID", idUser);
-                    Log.i("type", type + "");
-
                     RequestBody body = new FormBody.Builder()
                             .add("id", idUser)
-                            .add("type", type + "")
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITOR_DATES)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_METAS)
                             .post(body)
                             .build();
 
                     Response response = okhttp.newCall(request).execute();
-                    Log.i("takes", response.code() + "");
+
+                    Log.i("ERROR CODE", "" + response.code());
+
                     if (response.code() == 200) {
-                        Log.i("takes", "epa2");
+
                         JSONObject object = new JSONObject(response.body().string());
 
-                        JSONArray array = object.getJSONArray("tomas");
+                        String[] datosMetas = new String[4];
 
-                        dates = new ArrayList<String>();
-                        Log.i("takes", "epa3");
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject aux = new JSONObject(array.get(i).toString());
-                            dates.add(aux.getString("fecha"));
-                        }
+                        datosMetas[0] = object.getString("PasosAsignados");
 
+                        datosMetas[1] = object.getString("PasosLogrados");
 
-                        notify.onFinishProcess(true, "success");
-                    } else {
-                        notify.onFinishProcess(false, "Error intente nuevamente");
+                        datosMetas[2] = object.getString("KgCaloriasAsignadas");
+
+                        datosMetas[3] = object.getString("kgCaloriasLogradas");
+
+                        Log.i("METAS_2", Arrays.toString(datosMetas));
+                        notify.onFinishProcess(true, datosMetas);
+
                     }
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     notify.onFinishProcess(false, "Error en el servidor");
                 }
             }
         }).start();
+
+
     }
 
-    public void getDataMonitorDate(final String date, final DefaultCallback notify) {
+    public void getDataMonitorDateHome(final String type, final DefaultCallback notify) {
 
         new Thread(new Runnable() {
             @Override
@@ -104,27 +100,28 @@ public class AgentPulso {
 
                     RequestBody body = new FormBody.Builder()
                             .add("id", idUser)
-                            .add("type", 0 + "")
-                            .add("date", fecha)
                             .build();
 
                     Request request = new Request.Builder()
-                            .url(NetworkConstants.URL + NetworkConstants.PATH_MONITORING)
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_LAST_TAKE)
                             .post(body)
                             .build();
 
                     Response response = okhttp.newCall(request).execute();
 
+                    Log.i("ERROR CODE", "" + response.code());
+
 
                     if (response.code() == 200) {
 
+                        System.out.println("Si entre al 200");
+
                         JSONObject object = new JSONObject(response.body().string());
 
-                        JSONObject monitor = object.getJSONObject("pulso");
+                        JSONObject monitor = object;
 
                         take = new MonitorTake();
-                        take.setDate(fecha);
-                        take.setType(0);
+                        take.setType(Integer.parseInt(type));
                         take.setTime_start(monitor.getString("horaInicio"));
                         take.setTime_finish(monitor.getString("horaFin"));
                         take.setDuration(monitor.getString("duracion"));
@@ -153,7 +150,7 @@ public class AgentPulso {
                         Log.i("takes_1", take.getTakes_1().size() + "");
                         Log.i("takes_2", take.getTakes_2().size() + "");
 
-                        notify.onFinishProcess(true, "success");
+                        getMetas(notify);
                     } else {
                         notify.onFinishProcess(false, "Error intente nuevamente");
                     }
@@ -165,6 +162,5 @@ public class AgentPulso {
         }).start();
     }
 
-    /// metodos cristian
 
 }

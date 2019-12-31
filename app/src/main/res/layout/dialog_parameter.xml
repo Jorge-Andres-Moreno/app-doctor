@@ -84,7 +84,7 @@
                             android:layout_marginLeft="@dimen/margin_small"
                             android:layout_toRightOf="@id/pulsoCheck"
                             android:gravity="center_vertical"
-                            android:text="Pulso"
+                            android:text="@string/monitoringtext"
                             android:fontFamily="@font/montserrat_regular"
                             android:textSize="@dimen/text_size_medium"
                             android:textColor="@color/gray_strong" />
@@ -97,7 +97,6 @@
                             android:layout_below="@id/pulsoCheck"
                             android:layout_marginTop="@dimen/text_size_large" />
 
-
                         <TextView
                             android:id="@+id/scheduleText"
                             android:layout_width="wrap_content"
@@ -109,7 +108,7 @@
                             android:gravity="center_vertical"
                             android:textSize="@dimen/text_size_medium"
                             android:fontFamily="@font/montserrat_regular"
-                            android:text="ECG"
+                            android:text="Metas"
                             android:textColor="@color/gray_strong" />
 
 

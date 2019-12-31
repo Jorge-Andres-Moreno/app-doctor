@@ -63,5 +63,9 @@ public class LineGraph {
         mCurrentSeries.add(x, y);
     }
 
+    public void cambiarLimitesGrafica(int x, int y){
 
+        mRender.setYAxisMax(y+50);
+        mRender.setXAxisMax(x+50);
+    }
 }

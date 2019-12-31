@@ -49,6 +49,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
 
         private TextView textView;
 
+
         public DateHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.date);
@@ -57,6 +58,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
 
         @Override
         public void onClick(View v) {
+            agent.fecha = agent.dates.get(position);
             agent.getDataMonitorDate(agent.dates.get(position), new DefaultCallback() {
                 @Override
                 public void onFinishProcess(final boolean hasSucceeded, Object result) {
@@ -64,7 +66,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
                         @Override
                         public void run() {
                             if (hasSucceeded) {
-                                Intent in = new Intent(activity, GrahicActivity.class);
+
+                                Intent in = new Intent(activity, SummaryActivity.class);
                                 activity.startActivity(in);
                             } else
                                 Toast.makeText(activity, "Get Data Fail", Toast.LENGTH_SHORT);
@@ -72,11 +75,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateHolder> {
                     });
 
                 }
+
             });
-//            Intent in = new Intent(activity, MonitorActivity.class);
-//            in.putExtra("id", agent.dates.get(position));
-//            in.putExtra("fecha", agent.dates.get(position));
-//            activity.startActivity(in);
         }
     }
 
