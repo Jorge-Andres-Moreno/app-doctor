@@ -3,11 +3,15 @@ package medical.goals;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.myapplication.R;
 
@@ -40,7 +44,6 @@ public class GoalActivity extends AppCompatActivity {
 
     private int intKgcaloriasAsignadas;
     private double intKgcaloriasLogradas;
-    private double intKgcaloriasFaltantes;
 
     private static GraphicalView viewPasos;
     private LineGraphBarPasos linePasos;
@@ -74,7 +77,7 @@ public class GoalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grafica_metas);
+        setContentView(R.layout.activity_grafica_goals);
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -146,6 +149,32 @@ public class GoalActivity extends AppCompatActivity {
                 });
             }
         });
+
+        findViewById(R.id.assign_goals).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.assign_goals) {
+                    GoalDialog dialog = new GoalDialog(v.getContext(), v, new DefaultCallback() {
+                        @Override
+                        public void onFinishProcess(final boolean hasSucceeded, Object result) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(hasSucceeded) {
+                                        finish();
+                                    }else {
+                                        Toast.makeText(GoalActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                        }
+                    });
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialog.show();
+                }
+            }
+        });
     }
 
 
@@ -165,7 +194,7 @@ public class GoalActivity extends AppCompatActivity {
         }
 //        intKgcaloriasLogradas = Integer.parseInt(datosMetas[3]);
         intPasosFaltantes = intPasosAsignadas - intPasosLogrados;
-        intKgcaloriasFaltantes = intKgcaloriasAsignadas - intKgcaloriasLogradas;
+//        intKgcaloriasFaltantes = intKgcaloriasAsignadas - intKgcaloriasLogradas;
 
         lblPasosAsignados.setText(datosMetas[0]);
         lblPasosLogrados.setText(datosMetas[1]);

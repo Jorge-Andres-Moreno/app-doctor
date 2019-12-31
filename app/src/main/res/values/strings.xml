@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="assign_goals">Asignar Metas</string>
+    <string name="calories_1">Calorias:</string>
+    <string name="steps_1">Pasos:</string>
+    <string name="change">Cambiar</string>
+</resources>

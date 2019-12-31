@@ -14,6 +14,7 @@ public class NetworkConstants {
     public static final String PATH_UPDATE_TOKEN = "update/token/";
 
     public static final String PATH_METAS = "metas/";
+    public static final String PATH_GOALS_UPDATE = "metas-update/";
     public static final String PATH_LAST_TAKE = "ultima-toma/";
     public static final String PATH_MONITORING = "monitoreo/";
 

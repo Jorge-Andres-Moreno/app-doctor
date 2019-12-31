@@ -12,6 +12,7 @@ import medical.model.MonitorTake;
 import medical.utils.DefaultCallback;
 import medical.utils.NetworkConstants;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -85,6 +86,45 @@ public class AgentGoal {
         }).start();
 
 
+    }
+
+    public void setGoals(final int calories, final int steps, final DefaultCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient okhttp = new OkHttpClient.Builder()
+                            .connectTimeout(15, TimeUnit.SECONDS)
+                            .readTimeout(15, TimeUnit.SECONDS)
+                            .build();
+                    Log.i("CODE", "" + idUser);
+
+
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("id",idUser);
+                    jsonObject.put("KgCaloriasAsignadas",calories);
+                    jsonObject.put("PasosAsignados",steps);
+
+                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                    RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+
+                    Request request = new Request.Builder()
+                            .url(NetworkConstants.URL + NetworkConstants.PATH_GOALS_UPDATE)
+                            .post(body)
+                            .build();
+
+                    Response response = okhttp.newCall(request).execute();
+
+                    Log.i("CODE", "" + response.code());
+
+                    callback.onFinishProcess(response.code() == 200, null);
+
+                } catch (Exception e) {
+                    callback.onFinishProcess(false, null);
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     public void getDataMonitorDateHome(final String type, final DefaultCallback notify) {

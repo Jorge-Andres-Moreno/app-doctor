@@ -495,7 +495,23 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <Button
+                android:id="@+id/assign_goals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="@dimen/margin_xlarge"
+                android:background="@drawable/rounded_circle_blue"
+                android:elevation="20dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingHorizontal="@dimen/body_petit"
+                android:paddingVertical="@dimen/text_size_normal"
+                android:text="@string/assign_goals"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small" />
         </LinearLayout>
+
 
     </ScrollView>
 </RelativeLayout>
