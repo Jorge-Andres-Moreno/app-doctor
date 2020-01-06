@@ -44,6 +44,7 @@ public class GoalActivity extends AppCompatActivity {
 
     private int intKgcaloriasAsignadas;
     private double intKgcaloriasLogradas;
+    private double intKgcaloriasFaltantes;
 
     private static GraphicalView viewPasos;
     private LineGraphBarPasos linePasos;
@@ -143,6 +144,18 @@ public class GoalActivity extends AppCompatActivity {
                     public void run() {
                         if (hasSucceeded) {
                             inicializarGrafica();
+                        }
+                    }
+                });
+            }
+        });
+        agent.getMetas(new DefaultCallback() {
+            @Override
+            public void onFinishProcess(final boolean hasSucceeded, final Object result) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(hasSucceeded){
                             inicializarMetas(result);
                         }
                     }
@@ -194,7 +207,7 @@ public class GoalActivity extends AppCompatActivity {
         }
 //        intKgcaloriasLogradas = Integer.parseInt(datosMetas[3]);
         intPasosFaltantes = intPasosAsignadas - intPasosLogrados;
-//        intKgcaloriasFaltantes = intKgcaloriasAsignadas - intKgcaloriasLogradas;
+        intKgcaloriasFaltantes = intKgcaloriasAsignadas - intKgcaloriasLogradas;
 
         lblPasosAsignados.setText(datosMetas[0]);
         lblPasosLogrados.setText(datosMetas[1]);
@@ -202,7 +215,7 @@ public class GoalActivity extends AppCompatActivity {
 
         lblKgCaloriasasignada.setText(datosMetas[2]);
         lblKgCaloriasLogradas.setText(datosMetas[3]);
-        lblKgcaloriasFaltantes.setText("" + intPasosFaltantes);
+        lblKgcaloriasFaltantes.setText("" + intKgcaloriasFaltantes);
 
         linePasos.addCoordenada(1, intPasosAsignadas);
         linePasos.addCoordenada2(2, intPasosLogrados);

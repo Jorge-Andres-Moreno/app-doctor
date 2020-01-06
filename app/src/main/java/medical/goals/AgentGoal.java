@@ -190,9 +190,9 @@ public class AgentGoal {
                         Log.i("takes_1", take.getTakes_1().size() + "");
                         Log.i("takes_2", take.getTakes_2().size() + "");
 
-                        getMetas(notify);
+                        notify.onFinishProcess(true, "Data");
                     } else {
-                        notify.onFinishProcess(false, "Error intente nuevamente");
+                        notify.onFinishProcess(false, "No data");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
