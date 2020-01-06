@@ -1,2 +1,2 @@
-# app-doctor
-Mobile application for doctors, experts of health or monitors of information the users
+# app-professional
+Mobile application for professional or experts of health or monitors of information the users
